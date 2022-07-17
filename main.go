@@ -92,7 +92,8 @@ func addDurationForm() *tview.Form {
 
 	durationForm.AddInputField("edit duration?", "", 20, nil, func(duration string) {
 		// TODO handle parsing error
-		selected.duration, _ = time.ParseDuration(duration)
+		parsedDuration, _ := time.ParseDuration(duration)
+		selected.duration = selected.duration + parsedDuration
 	})
 
 	durationForm.AddButton("Save", func() {
